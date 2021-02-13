@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -75,6 +76,19 @@ class BookListTest {
     }
 
     @Test
+    // delete a book that is not in the list
+    public void testDeleteBookNotInList() {
+        testBookList.addBook(testBook1);
+        testBookList.addBook(testBook2);
+        testBookList.deleteBook("The Lord of the Rings");
+        assertEquals(2, testBookList.size());
+        assertTrue(testBookList.contains(testBook1));
+        assertTrue(testBookList.contains(testBook2));
+
+
+    }
+
+    @Test
     public void testChangeStatus() {
         testBookList.addBook(testBook1);
         testBookList.changeStatus("A Tale of Two Cities");
@@ -82,6 +96,31 @@ class BookListTest {
         testBookList.addBook(testBook2);
         testBookList.changeStatus("Crime and Punishment");
         assertEquals("read", testBook2.getStatus());
+    }
+
+    @Test
+    public void testSize() {
+        assertEquals(0,testBookList.size());
+        testBookList.addBook(testBook1);
+        testBookList.addBook(testBook2);
+        testBookList.addBook(testBook3);
+        assertEquals(3,testBookList.size());
+    }
+
+    @Test
+    public void testContains() {
+        testBookList.addBook(testBook1);
+        testBookList.addBook(testBook2);
+        testBookList.addBook(testBook3);
+        assertTrue(testBookList.contains(testBook1));
+        assertTrue(testBookList.contains(testBook2));
+        assertTrue(testBookList.contains(testBook3));
+    }
+
+    @Test
+    public void testGetBookList() {
+       List<Book> listOfBooks =  testBookList.getBookList();
+       assertEquals(listOfBooks,listOfBooks);
     }
 }
 
