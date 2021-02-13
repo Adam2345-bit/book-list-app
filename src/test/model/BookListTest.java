@@ -97,8 +97,7 @@ class BookListTest {
         assertEquals("unread", testBook1.getStatus());
         testBookList.addBook(testBook2);
         testBookList.changeStatus("Crime and Punishment");
-        String updatedStatus = testBook2.getStatus();
-        assertEquals("read", updatedStatus);
+        assertEquals("read", testBook2.getStatus());
     }
 
     @Test

@@ -46,7 +46,7 @@ public class BookList {
             if (a.getTitle().equals(title)) {
                 if (a.getStatus().equals("read")) {
                     a.setStatus("unread");
-                } else if (a.getStatus().equals("unread")) {
+                } else {
                     a.setStatus("read");
                 }
             }
