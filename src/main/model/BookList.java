@@ -25,7 +25,7 @@ public class BookList {
     }
 
     //MODIFIES: this
-    //EFFECTS: deletes a book from a book list, if it is already there. If not, do nothing
+    //EFFECTS: deletes a book from a book list, if it is already there. If not, does nothing
     public void deleteBook(String title) {
         int index = -1;
         for (int i = 0; i < bookList.size(); i++) {
@@ -46,7 +46,7 @@ public class BookList {
             if (a.getTitle().equals(title)) {
                 if (a.getStatus().equals("read")) {
                     a.setStatus("unread");
-                } else {
+                } else if (a.getStatus().equals("unread")) {
                     a.setStatus("read");
                 }
             }

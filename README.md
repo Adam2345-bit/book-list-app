@@ -22,7 +22,7 @@ books by providing a convenient way to manage their book lists.
 ## User Stories
 
  - As a user, I want to be able to view the list of books.
- - As a user, I want to be able to add books to my book list.
+ - As a user, I want to be able to add a book to my book list.
  - As a user, I want to be able to delete books from my book list.
  - As a user, I want to be able to mark a book as read/unread.
  

@@ -1,12 +1,11 @@
 package ui;
 
-
 import model.Book;
 import model.BookList;
 
 import java.util.Scanner;
 
-//BookList application
+// Represents BookList application
 public class BookListApp {
     private Scanner userInput = new Scanner(System.in);
     private BookList bookList = new BookList();
@@ -84,7 +83,7 @@ public class BookListApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: delete a book from a book list based on its title
+    // EFFECTS: deletes a book from a book list based on its title
     public void deleteUserBook() {
         System.out.print("Enter title: ");
         String title = userInput.nextLine();

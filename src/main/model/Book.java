@@ -1,6 +1,6 @@
 package model;
 
-//Represents a book that has a title, an author (full name), and status (read/unread)
+//Represents a book that has a title, an author (full name), and a status (read/unread)
 public class Book {
     private String title;
     private String authorFirstName;

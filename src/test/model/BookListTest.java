@@ -26,6 +26,12 @@ class BookListTest {
                 "read");
     }
 
+    private void addThreeBooks() {
+        testBookList.addBook(testBook1);
+        testBookList.addBook(testBook2);
+        testBookList.addBook(testBook3);
+    }
+
     @Test
     // empty book list
     public void testConstructor() {
@@ -44,9 +50,7 @@ class BookListTest {
     @Test
     // add several books that are not in a book list
     public void testAddSeveralBooks() {
-        testBookList.addBook(testBook1);
-        testBookList.addBook(testBook2);
-        testBookList.addBook(testBook3);
+        addThreeBooks();
         assertTrue(testBookList.contains(testBook1));
         assertTrue(testBookList.contains(testBook2));
         assertTrue(testBookList.contains(testBook3));
@@ -66,9 +70,7 @@ class BookListTest {
     @Test
     // delete a book that is already in the list
     public void testDeleteBook() {
-        testBookList.addBook(testBook1);
-        testBookList.addBook(testBook2);
-        testBookList.addBook(testBook3);
+        addThreeBooks();
         assertEquals(3, testBookList.size());
         testBookList.deleteBook("A Tale of Two Cities");
         assertEquals(2, testBookList.size());
@@ -101,17 +103,13 @@ class BookListTest {
     @Test
     public void testSize() {
         assertEquals(0,testBookList.size());
-        testBookList.addBook(testBook1);
-        testBookList.addBook(testBook2);
-        testBookList.addBook(testBook3);
+        addThreeBooks();
         assertEquals(3,testBookList.size());
     }
 
     @Test
     public void testContains() {
-        testBookList.addBook(testBook1);
-        testBookList.addBook(testBook2);
-        testBookList.addBook(testBook3);
+        addThreeBooks();
         assertTrue(testBookList.contains(testBook1));
         assertTrue(testBookList.contains(testBook2));
         assertTrue(testBookList.contains(testBook3));
