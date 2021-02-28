@@ -29,6 +29,6 @@ Phase 1
 
 Phase 2
 - As a user, I want to be able to save my list of books to a file.
-- As a user, I want to be able to load my list of books from the file.
+- As a user, I want to be able to load my list of books from a file.
 
  
