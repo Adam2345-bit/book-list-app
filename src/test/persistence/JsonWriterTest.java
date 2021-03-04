@@ -9,8 +9,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Unit test for JsonWriter
 class JsonWriterTest extends JsonTest {
 
+    // CITATION: code obtained from JsonSerializationDemo
+    //           URL: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     @Test
     void testWriterInvalidFile() {
         try {
@@ -23,6 +26,8 @@ class JsonWriterTest extends JsonTest {
         }
     }
 
+    // CITATION: code obtained from JsonSerializationDemo
+    //           URL: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     @Test
     void testWriterEmptyBookList() {
         try {
@@ -40,6 +45,8 @@ class JsonWriterTest extends JsonTest {
         }
     }
 
+    // CITATION: code obtained from JsonSerializationDemo
+    //           URL: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     @Test
     void testWriterTwoBooksInBookList() {
         try {
