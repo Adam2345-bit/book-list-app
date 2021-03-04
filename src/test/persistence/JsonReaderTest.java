@@ -23,7 +23,7 @@ class JsonReaderTest extends JsonTest {
     }
 
     @Test
-    void testReaderEmptyWorkRoom() {
+    void testReaderEmptyBookList() {
         JsonReader reader = new JsonReader("./data/testReaderEmptyBookList.json");
         try {
             BookList bl = reader.read();
@@ -34,14 +34,14 @@ class JsonReaderTest extends JsonTest {
     }
 
     @Test
-    void testReaderGeneralWorkRoom() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
+    void testReaderTwoBooksInBookList() {
+        JsonReader reader = new JsonReader("./data/testReaderTwoBooksInBookList.json");
         try {
             BookList bl = reader.read();
             List<Book> bookList = bl.getBookList();
             assertEquals(2, bookList.size());
-            checkThingy("needle", Category.STITCHING, thingies.get(0));
-            checkThingy("saw", Category.WOODWORK, thingies.get(1));
+            checkBook("Physics", "Brandon", "Brown","read", bookList.get(0));
+            checkBook("Biophysics", "Dan", "Johnson","unread", bookList.get(1));
         } catch (IOException e) {
             fail("Couldn't read from file");
         }

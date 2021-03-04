@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 // Represents BookList application
 public class BookListApp {
-    private final String SAVE_FILE_NAME = "./data/booklist.json";
+    private static final String SAVE_FILE_NAME = "./data/booklist.json";
     private Scanner userInput = new Scanner(System.in);
     private BookList bookList = new BookList();
 
@@ -27,32 +27,16 @@ public class BookListApp {
     private void runBookList() {
         boolean startApp = true;
         String command;
-
         while (startApp) {
             System.out.println();
             displayBookList();
             System.out.println();
             displayMenu();
             command = userInput.nextLine();
-            switch (command) {
-                case "a":
-                    addNewBook();
-                    break;
-                case "d":
-                    deleteUserBook();
-                    break;
-                case "c":
-                    changeStatusUserBook();
-                    break;
-                case "s":
-                    saveBookList();
-                    break;
-                case "l":
-                    loadBookList();
-                    break;
-                case "q":
-                    startApp = false;
-                    System.out.println("BookList App was terminated");
+            processCommand(command);
+            if (command.equals("q")) {
+                startApp = false;
+                System.out.println("BookList App was terminated");
             }
         }
     }
@@ -142,6 +126,28 @@ public class BookListApp {
             System.out.println("Unable to read book list data file: " + SAVE_FILE_NAME);
         }
 
+    }
+
+    // MODIFIES: this
+    // EFFECTS: process user command
+    public void processCommand(String command) {
+        switch (command) {
+            case "a":
+                addNewBook();
+                break;
+            case "d":
+                deleteUserBook();
+                break;
+            case "c":
+                changeStatusUserBook();
+                break;
+            case "s":
+                saveBookList();
+                break;
+            case "l":
+                loadBookList();
+                break;
+        }
     }
 
 }

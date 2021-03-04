@@ -1,8 +1,7 @@
 package persistence;
 
-import model.Category;
-import model.Thingy;
-import model.WorkRoom;
+import model.Book;
+import model.BookList;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -10,15 +9,12 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class JsonWriterTest extends persistence.JsonTest {
-    //NOTE TO CPSC 210 STUDENTS: the strategy in designing tests for the JsonWriter is to
-    //write data to a file and then use the reader to read it back in and check that we
-    //read in a copy of what was written out.
+class JsonWriterTest extends JsonTest {
 
     @Test
     void testWriterInvalidFile() {
         try {
-            WorkRoom wr = new WorkRoom("My work room");
+            BookList bl = new BookList();
             JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
             writer.open();
             fail("IOException was expected");
@@ -28,41 +24,39 @@ class JsonWriterTest extends persistence.JsonTest {
     }
 
     @Test
-    void testWriterEmptyWorkroom() {
+    void testWriterEmptyBookList() {
         try {
-            WorkRoom wr = new WorkRoom("My work room");
-            JsonWriter writer = new JsonWriter("./data/testWriterEmptyWorkroom.json");
+            BookList bl = new BookList();
+            JsonWriter writer = new JsonWriter("./data/testWriterEmptyBookList.json");
             writer.open();
-            writer.write(wr);
+            writer.write(bl);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterEmptyWorkroom.json");
-            wr = reader.read();
-            assertEquals("My work room", wr.getName());
-            assertEquals(0, wr.numThingies());
+            JsonReader reader = new JsonReader("./data/testWriterEmptyBookList.json");
+            bl = reader.read();
+            assertEquals(0, bl.size());
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
     }
 
     @Test
-    void testWriterGeneralWorkroom() {
+    void testWriterTwoBooksInBookList() {
         try {
-            WorkRoom wr = new WorkRoom("My work room");
-            wr.addThingy(new Thingy("saw", Category.METALWORK));
-            wr.addThingy(new Thingy("needle", Category.STITCHING));
-            JsonWriter writer = new JsonWriter("./data/testWriterGeneralWorkroom.json");
+            BookList bl = new BookList();
+            bl.addBook(new Book("Physics", "Brandon", "Brown","read"));
+            bl.addBook(new Book("Biophysics", "Dan", "Johnson","unread"));
+            JsonWriter writer = new JsonWriter("./data/testWriterTwoBooksInBookList.json");
             writer.open();
-            writer.write(wr);
+            writer.write(bl);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterGeneralWorkroom.json");
-            wr = reader.read();
-            assertEquals("My work room", wr.getName());
-            List<Thingy> thingies = wr.getThingies();
-            assertEquals(2, thingies.size());
-            checkThingy("saw", Category.METALWORK, thingies.get(0));
-            checkThingy("needle", Category.STITCHING, thingies.get(1));
+            JsonReader reader = new JsonReader("./data/testWriterTwoBooksInBookList.json");
+            bl = reader.read();
+            List<Book> bookList = bl.getBookList();
+            assertEquals(2, bookList.size());
+            checkBook("Physics", "Brandon", "Brown","read", bookList.get(0));
+            checkBook("Biophysics", "Dan", "Johnson","unread", bookList.get(1));
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");
