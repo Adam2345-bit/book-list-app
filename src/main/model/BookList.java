@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,4 +70,26 @@ public class BookList {
         return bookList.contains(b);
     }
 
+    // CITATION: code obtained from JsonSerializationDemo
+    //           URL: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    // EFFECTS: returns books in a book list as JSON object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("books", booksToJson());
+        return json;
+    }
+
+    // CITATION: code obtained from JsonSerializationDemo
+    //           URL: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    // EFFECTS: returns books in a book list as a JSON array
+    private JSONArray booksToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Book b : bookList) {
+            jsonArray.put(b.toJson());
+        }
+
+        return jsonArray;
+    }
 }
+

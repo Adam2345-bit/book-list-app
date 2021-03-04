@@ -2,13 +2,20 @@ package ui;
 
 import model.Book;
 import model.BookList;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 // Represents BookList application
 public class BookListApp {
+    private final String SAVE_FILE_NAME = "./data/booklist.json";
     private Scanner userInput = new Scanner(System.in);
     private BookList bookList = new BookList();
+
 
     // EFFECTS: runs the BookList application
     public BookListApp() {
@@ -28,14 +35,20 @@ public class BookListApp {
             displayMenu();
             command = userInput.nextLine();
             switch (command) {
-                case "1":
+                case "a":
                     addNewBook();
                     break;
-                case "2":
+                case "d":
                     deleteUserBook();
                     break;
-                case "3":
+                case "c":
                     changeStatusUserBook();
+                    break;
+                case "s":
+                    saveBookList();
+                    break;
+                case "l":
+                    loadBookList();
                     break;
                 case "q":
                     startApp = false;
@@ -58,9 +71,11 @@ public class BookListApp {
 
     // EFFECTS: displays menu of options
     public void displayMenu() {
-        System.out.println("1 - add a book");
-        System.out.println("2 - delete a book");
-        System.out.println("3 - change status of a book");
+        System.out.println("a - add a book");
+        System.out.println("d - delete a book");
+        System.out.println("c - change status of a book");
+        System.out.println("s - save the list of books");
+        System.out.println("l - load the previous list of books");
         System.out.println("q - quit");
         System.out.print("Enter your choice: ");
     }
@@ -96,6 +111,37 @@ public class BookListApp {
         System.out.print("Enter title: ");
         String title = userInput.nextLine();
         bookList.changeStatus(title);
+    }
+
+    // CITATION: code obtained from JsonSerializationDemo
+    //           URL: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    // EFFECTS: saves book list to file
+    public void saveBookList() {
+        JsonWriter myWriter = new JsonWriter(SAVE_FILE_NAME);
+        try {
+            myWriter.open();
+            myWriter.write(bookList);
+            myWriter.close();
+            System.out.println("Saved book list to " + SAVE_FILE_NAME);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write book list data file: " + SAVE_FILE_NAME);
+        }
+
+    }
+
+    // CITATION: code obtained from JsonSerializationDemo
+    //           URL: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    // MODIFIES: this
+    // EFFECTS: loads book list from file
+    public void loadBookList() {
+        JsonReader myReader = new JsonReader(SAVE_FILE_NAME);
+        try {
+            bookList = myReader.read();
+            System.out.println("Loaded book list from " + SAVE_FILE_NAME);
+        } catch (IOException e) {
+            System.out.println("Unable to read book list data file: " + SAVE_FILE_NAME);
+        }
+
     }
 
 }
