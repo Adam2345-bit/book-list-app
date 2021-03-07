@@ -1,6 +1,6 @@
 {"books": [{
-    "authorLastName": "Bobson",
-    "authorFirstName": "John",
-    "title": "Book1",
+    "authorLastName": "b",
+    "authorFirstName": "a",
+    "title": "book1",
     "status": "read"
 }]}
