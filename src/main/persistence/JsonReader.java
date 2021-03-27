@@ -78,7 +78,7 @@ public class JsonReader {
         String authorFirstName = jsonObject.getString("authorFirstName");
         String authorLastName = jsonObject.getString("authorLastName");
         String status = jsonObject.getString("status");
-        Book book = new Book(title, authorFirstName, authorLastName,status);
+        Book book = new Book(title, authorFirstName, authorLastName, status);
         bl.addBook(book);
     }
 }

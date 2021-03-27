@@ -1,6 +1,1 @@
-{"books": [{
-    "authorLastName": "b",
-    "authorFirstName": "a",
-    "title": "book1",
-    "status": "read"
-}]}
+{"books": []}
