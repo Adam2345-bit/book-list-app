@@ -1,1 +1,32 @@
-{"books": []}
+{"books": [
+    {
+        "authorLastName": "B",
+        "authorFirstName": "A",
+        "title": "Book1",
+        "status": "read"
+    },
+    {
+        "authorLastName": "D",
+        "authorFirstName": "C",
+        "title": "Book2",
+        "status": "unread"
+    },
+    {
+        "authorLastName": "R",
+        "authorFirstName": "H",
+        "title": "Book3",
+        "status": "read"
+    },
+    {
+        "authorLastName": "T",
+        "authorFirstName": "R",
+        "title": "Book4",
+        "status": "unread"
+    },
+    {
+        "authorLastName": "R",
+        "authorFirstName": "T",
+        "title": "Book5",
+        "status": "read"
+    }
+]}
