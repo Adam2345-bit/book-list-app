@@ -2,31 +2,13 @@
     {
         "authorLastName": "B",
         "authorFirstName": "A",
-        "title": "Book1",
+        "title": "Book 1",
         "status": "read"
     },
     {
-        "authorLastName": "D",
-        "authorFirstName": "C",
-        "title": "Book2",
+        "authorLastName": "W",
+        "authorFirstName": "Q",
+        "title": "Book 2",
         "status": "unread"
-    },
-    {
-        "authorLastName": "R",
-        "authorFirstName": "H",
-        "title": "Book3",
-        "status": "read"
-    },
-    {
-        "authorLastName": "T",
-        "authorFirstName": "R",
-        "title": "Book4",
-        "status": "unread"
-    },
-    {
-        "authorLastName": "R",
-        "authorFirstName": "T",
-        "title": "Book5",
-        "status": "read"
     }
 ]}

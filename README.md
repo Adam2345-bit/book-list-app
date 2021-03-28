@@ -31,4 +31,7 @@ Phase 2
 - As a user, I want to be able to save my list of books to a file.
 - As a user, I want to be able to load my list of books from a file.
 
+Phase 3
+- (GUI only): As a user, I want to be able to view only read/unread books in a book list.
+
  
