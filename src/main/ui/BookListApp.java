@@ -2,6 +2,7 @@ package ui;
 
 import model.Book;
 import model.BookList;
+import model.exceptions.InvalidStatusException;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -94,7 +95,11 @@ public class BookListApp {
     public void changeStatusUserBook() {
         System.out.print("Enter title: ");
         String title = userInput.nextLine();
-        bookList.changeStatus(title);
+        try {
+            bookList.changeStatus(title);
+        } catch (InvalidStatusException e) {
+            System.out.println("The status of your book was invalid, so it was changed to a default unread status.");
+        }
     }
 
     // CITATION: code obtained from JsonSerializationDemo

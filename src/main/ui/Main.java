@@ -4,6 +4,6 @@ package ui;
 public class Main {
     // EFFECTS: creates BookListApp
     public static void main(String[] args) {
-        new BookListGuiApp();
+        new BookListApp();
     }
 }

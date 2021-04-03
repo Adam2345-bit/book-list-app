@@ -34,4 +34,17 @@ Phase 2
 Phase 3
 - (GUI only): As a user, I want to be able to view only read/unread books in a book list.
 
+**Phase 4: Task 2**
+
+I chose to make changeStatus method from BookList class robust. It throws checked InvalidStatusException.
+Appropriate tests have been added.
+
+**Phase 4: Task 3**
+
+Since the BookApp is very simple application that includes only two classes in the model package,
+no refactoring is necessary.
+
+
+
+
  

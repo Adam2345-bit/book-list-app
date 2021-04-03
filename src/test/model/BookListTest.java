@@ -1,5 +1,6 @@
 package model;
 
+import model.exceptions.InvalidStatusException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +15,7 @@ class BookListTest {
     private Book testBook1;
     private Book testBook2;
     private Book testBook3;
+    private Book testBook4;
 
     @BeforeEach
     public void runBefore() {
@@ -24,6 +26,8 @@ class BookListTest {
                 "unread");
         testBook3 = new Book("The Lord of the Rings", "John", "Tolkien",
                 "read");
+        testBook4 = new Book("Dummy Book", "Bob", "Jonson",
+                "something");
     }
 
     private void addThreeBooks() {
@@ -91,13 +95,35 @@ class BookListTest {
     }
 
     @Test
-    public void testChangeStatus() {
-        testBookList.addBook(testBook1);
-        testBookList.changeStatus("A Tale of Two Cities");
-        assertEquals("unread", testBook1.getStatus());
-        testBookList.addBook(testBook2);
-        testBookList.changeStatus("Crime and Punishment");
-        assertEquals("read", testBook2.getStatus());
+    public void testChangeStatusException() {
+        try {
+            testBookList.addBook(testBook4);
+            testBookList.changeStatus("Dummy Book");
+            fail("Error");
+        } catch (InvalidStatusException e) {
+            //pass
+        }
+    }
+
+    @Test
+    public void testChangeStatusNoException() {
+
+        try {
+            testBookList.addBook(testBook1);
+            testBookList.changeStatus("A Tale of Two Cities");
+            assertEquals("unread", testBook1.getStatus());
+        } catch (InvalidStatusException e) {
+            fail("Error");
+        }
+
+        try {
+            testBookList.addBook(testBook2);
+            testBookList.changeStatus("Crime and Punishment");
+            assertEquals("read", testBook2.getStatus());
+        } catch (InvalidStatusException e) {
+            fail("Error");
+        }
+
     }
 
     @Test

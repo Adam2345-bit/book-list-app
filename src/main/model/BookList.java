@@ -1,5 +1,6 @@
 package model;
 
+import model.exceptions.InvalidStatusException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -41,16 +42,18 @@ public class BookList {
         }
     }
 
-    // REQUIRES: status is either read or unread
     // MODIFIES: Book
     // EFFECTS: changes the status of the book from read to unread and back
-    public void changeStatus(String title) {
+    public void changeStatus(String title) throws InvalidStatusException {
         for (Book a : bookList) {
             if (a.getTitle().equals(title)) {
                 if (a.getStatus().equals("read")) {
                     a.setStatus("unread");
-                } else {
+                } else if (a.getStatus().equals("unread")) {
                     a.setStatus("read");
+                } else {
+                    a.setStatus("unread");
+                    throw new InvalidStatusException();
                 }
             }
         }
