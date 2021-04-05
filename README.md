@@ -41,8 +41,8 @@ Appropriate tests have been added.
 
 **Phase 4: Task 3**
 
-Since the BookApp is very simple application that includes only two classes in the model package,
-no refactoring is necessary.
+- I would have refactored BookListGuiApp class by moving fields for buttons, text fields and labels into the 3 
+respective classes. I would then instantiate these classes in the BookListGuiApp class. It would have improved the SRP.
 
 
 
