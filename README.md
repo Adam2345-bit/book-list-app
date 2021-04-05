@@ -2,7 +2,7 @@
 
 ## Project Proposal
 
-**What will this applicaiton do ?**
+**What will this application do ?**
 
 The Book List application shows the user a list of books (name and author) that the user 
 wants to read. It also allows the user to mark books as read, 
