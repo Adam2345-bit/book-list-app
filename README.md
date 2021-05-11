@@ -1,4 +1,4 @@
-# The Book List
+# The Book List App
 
 ## Description
 
